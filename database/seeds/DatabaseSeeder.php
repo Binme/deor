@@ -22,5 +22,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         factory(Event::class, 20)->create();
+        $this->call(UsersTableSeeder::class);
+        $this->call(NewsTableSeeder::class);
+        $this->call(New_detailsTableSeeder::class);
+        $this->call(RecomsTableSeeder::class);
+        $this->call(Recom_detailsTableSeeder::class);
     }
 }
