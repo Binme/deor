@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecomsTable extends Migration
+class CreateParticipantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateRecomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recoms', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('filter')->nullable();
-            $table->string('img')->nullable();
-            $table->string('title')->nullable();
-            $table->string('address')->nullable();
-            $table->text('rating')->nullable();
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->index('event_id');
+            $table->index('user_id');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateRecomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recoms');
+        Schema::dropIfExists('participants');
     }
 }
